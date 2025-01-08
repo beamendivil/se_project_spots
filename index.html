@@ -1,69 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A unique coffee shop landing page where quality meets taste."/>
-  <meta name="author" content="Bea Mendivil" />
-  <metaname="keywords" content="Coffee, Cafe, Quality Coffee, Best Coffee, Coffee Shop"/>
-  <link rel="stylesheet" href="./pages/index.css" />
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-  <title>SPOTS</title>
-</head>
-<body>
-  <div lass="page">
-    <header class="header">
-      <img src="images/Logo.svg" alt="spots_logo" class="header__logo">
-    </header>
-    <main class="content"></main>
-  </div>
-  
-
-    <nav class="nav">
-    </nav>
-  
-    <div class="card-container">
-
-      <div class="card">
-        <img src="image1.jpg" alt="Card 1 Image">
-        <div class="card-content">
-          <h3>Card Title 1</h3>
-          <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-  
-      <div class="card">
-        <img src="image2.jpg" alt="Card 2 Image">
-        <div class="card-content">
-          <h3>Card Title 2</h3>
-          <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <div class="card">
-          <img src="image2.jpg" alt="Card 3 Image">
-          <div class="card-content">
-            <h3>Card Title 3</h3>
-            <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A unique coffee shop landing page where quality meets taste."
+    />
+    <meta name="author" content="Bea Mendivil" />
+    <meta
+      name="keywords"
+      content="Coffee, Cafe, Quality Coffee, Best Coffee, Coffee Shop"
+    />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>SPOTS</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img src="images/Logo.svg" alt="spots_logo" class="header__logo" />
+      </header>
+      <main class="content">
+        <section class="profile page__section">
+          <img
+            src="/images/avatar.jpg"
+            alt="Bessie Coleman"
+            class="profile__avatar"
+          />
+          <div class="profile__column">
+            <h1 class="profile__name">Bessie Coleman</h1>
+            <p class="profile__description">Civil Aviator</p>
+            <button type="button" class="profile__edit-btn">
+              <img src="/images/pencil.svg" alt="pencil icon" />Edit Profile
+            </button>
           </div>
-      </div>
 
-      <div class="card"><div class="card"><div class="card"></div>
-        <img src="image2.jpg" alt="Card 4 Image">
-        <div class="card-content">
-          <h3>Card Title 4</h3>
-          <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div></div>
-        <img src="image2.jpg" alt="Card 5 Image">
-        <div class="card-content">
-          <h3>Card Title 5</h3>
-          <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div></div>
-        <img src="image2.jpg" alt="Card 6 Image">
-        <div class="card-content">
-          <h3>Card Title 6</h3>
-          <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-  
-      </div>
-    <footer class="footer"></footer>
-</body>
+          <button type="button" class="profile__add-btn">
+            <img src="/images/add.svg" alt="plus icon" />New Post
+          </button>
+        </section>
+
+        <section class="cards">
+          <ul class="cards__list">
+            <li class="card">
+              <img
+                src="images/1-photo-by-moritz-feldmann-from-pexels.jpg"
+                alt="Val Thorens"
+                class="card__image"
+              />
+              <div class="card__content">
+                <h2 class="card__title">Val Thorens</h2>
+                <button type="button" class="card__like-btn"></button>
+              </div>
+            </li>
+
+            <li class="card">
+              <img
+                src="images/2-photo-by-ceiline-from-pexels.jpg"
+                alt="Restaurant terrace"
+                class="card__image"
+              />
+              <div class="card__content">
+                <h2 class="card__title">Restaurant terrace</h2>
+                <button type="button" class="card__like-btn"></button>
+              </div>
+            </li>
+            <li class="card">
+              <img
+                src="images/3-photo-by-tubanur-dogan-from-pexels.jpg"
+                alt="An outdoor cafe"
+                class="card__image"
+              />
+              <div class="card__content">
+                <h2 class="card__title">An outdoor cafe</h2>
+                <button type="button" class="card__like-btn"></button>
+              </div>
+            </li>
+
+            <li class="card">
+              <img
+                src="images/4-photo-by-maurice-laschet-from-pexels.jpg"
+                alt="A very long bridge, over the forest..."
+                class="card__image"
+              />
+              <div class="card__content">
+                <h2 class="card__title">
+                  A very long bridge, over the forest...
+                </h2>
+                <button type="button" class="card__like-btn"></button>
+              </div>
+            </li>
+
+            <li class="card">
+              <img
+                src="images/5-photo-by-van-anh-nguyen-from-pexels.jpg"
+                alt="Tunnel with morning light"
+                class="card__image"
+              />
+              <div class="card__content">
+                <h2 class="card__title">Tunnel with morning light</h2>
+                <button type="button" class="card__like-btn"></button>
+              </div>
+            </li>
+
+            <li class="card">
+              <img
+                src="images/6-photo-by-moritz-feldmann-from-pexels.jpg"
+                alt="Mountain house"
+                class="card__image"
+              />
+              <div class="card__content">
+                <h2 class="card__title">Mountain house</h2>
+                <button type="button" class="card__like-btn"></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">&copy;2024 Bea Mendivil</p>
+      </footer>
+    </div>
+  </body>
 </html>
