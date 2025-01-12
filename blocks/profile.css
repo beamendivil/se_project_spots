@@ -75,7 +75,8 @@
   gap: 8px;
   margin-left: auto;
   justify-content: center;
-  align-items: end;
+  align-self: stretch;
+  margin-top: auto;
 }
 
 .profile__add-btn:hover {
@@ -84,8 +85,9 @@
 
 @media screen and (max-width: 627px) {
   .profile {
+    display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     padding-top: 20px;
     text-align: center;
     max-width: 288px;
