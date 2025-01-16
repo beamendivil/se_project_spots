@@ -59,16 +59,21 @@ Once the project is finished, you can:
 
 The UI/UX was designed using Figma. You can view the design details [here](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
 
-![Figma Spots Page](../Spots1.png)
+![Figma Spots Page](./images/Spots1.png)
 
 ## Tech Notes
 
 Responsiveness: A media query @media screen and (max-width: 627px) adjusts the layout for smaller screens, stacking the avatar and details vertically.
 
 <div style="display: flex; max-width: 449px; border-width: 2px; border-color: #efefef; border-style: solid; padding: 20px; flex-direction: column">
-<img src="../SpotsSM.png" style="margin-right:20px; height: 143px;">
+<img src="./images/SpotsSM.png" style="margin-right:20px; height: 143px;">
 </div>
 
 **Video**  
 [A descriptive video explanation]
 check the live demo out! https://drive.google.com/file/d/1-RjfasRezLKkkWayQA3hJxWSoaUXnOBr/view?usp=sharing
+
+## Contact
+
+Software Engineer
+Bea Mendivil: bea@curatedtucson.com
