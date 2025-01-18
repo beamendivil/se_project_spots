@@ -2,11 +2,11 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  height: 18px;
   padding: 60px 0;
 }
 
 .footer__copyright {
+  margin: auto;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -14,4 +14,10 @@
   line-height: 100%;
   color: rgba(33, 33, 33, 0.7);
   white-space: nowrap;
+}
+@media screen and (max-width: 537px) {
+  .footer__copyright {
+    white-space: normal;
+    font-size: 14px;
+  }
 }
