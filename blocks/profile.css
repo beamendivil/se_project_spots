@@ -33,7 +33,6 @@
 
 .profile__description {
   margin: 0;
-  margin-top: auto;
   font-weight: 500;
   color: rgba(33, 33, 33, 0.7);
   font-size: 16px;
@@ -51,6 +50,7 @@
   text-align: center;
   line-height: 16px;
   margin-left: 0px;
+  margin-top: auto;
   gap: 8px;
   opacity: 70%;
   border: none;
