@@ -2,13 +2,14 @@
   display: flex;
   padding: 34px 0 20px;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
+  gap: 20px;
 }
 
 .profile__avatar {
-  margin-right: 20px;
   height: 190px;
   width: 190px;
   border-radius: 8px;
+  gap: 20px;
 }
 
 .profile__column {
