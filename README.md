@@ -73,6 +73,10 @@ Responsiveness: A media query @media screen and (max-width: 627px) adjusts the l
 [A descriptive video explanation]
 check the live demo out! https://drive.google.com/file/d/1-RjfasRezLKkkWayQA3hJxWSoaUXnOBr/view?usp=sharing
 
+**LiveLink**
+[Git Hub Link]
+https://beamendivil.github.io/se_project_spots/
+
 ## Contact
 
 Software Engineer
