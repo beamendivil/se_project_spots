@@ -111,6 +111,11 @@
     text-align: center;
   }
 
+  .profile__description {
+    margin: 0 0 32px;
+    max-width: 288px;
+  }
+
   .profile__edit-btn {
     flex-direction: row;
     justify-content: center;
@@ -132,4 +137,4 @@
     height: 80px;
     width: 80px;
   }
-}
+} }
