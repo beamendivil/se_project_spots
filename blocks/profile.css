@@ -103,6 +103,7 @@
     align-items: center;
     text-align: center;
     width: 288px;
+    padding-top: 20px;
   }
 
   .profile__name {
@@ -137,4 +138,4 @@
     height: 80px;
     width: 80px;
   }
-} }
+}
