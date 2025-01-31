@@ -1,0 +1,13 @@
+.content {
+  /* If there is extra space, the main content should fill it. */
+  flex-grow: 1;
+  flex-shrink: 0;
+
+  padding: 0 20px;
+}
+
+@media screen and (max-width: 627px) {
+  .content {
+    padding: 0 16px;
+  }
+}
