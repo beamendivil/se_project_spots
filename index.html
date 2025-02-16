@@ -117,25 +117,52 @@
       </footer>
       <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
-          <button type="submit" class="modal__close-btn"></button>
+          <button type="button" class="modal__close-btn">Close</button>
           <h2 class="modal__title">Edit profile</h2>
           <form name="edit-profile" class="modal__form">
-            <label for="name" class="modal__label">
+            <label for="profile-name-input" class="modal__label">
               Name
               <input
-                id="name"
+                id="profile-name-input"
                 type="text"
                 class="modal__input"
                 placeholder="Type your name"
               />
             </label>
-            <label for="description" class="modal__label">
+            <label for="profile-description-input" class="modal__label">
               Description
               <input
-                id="description"
+                id="profile-description-input"
                 type="text"
                 class="modal__input"
-                placeholder="Describe yourself"
+                placeholder="Type your description"
+              />
+            </label>
+            <button type="submit" class="modal__submit-btn">Save</button>
+          </form>
+        </div>
+      </div>
+      <div class="modal" id="edit-modal">
+        <div class="modal__container">
+          <button type="button" class="modal__close-btn">Close</button>
+          <h2 class="modal__title">Edit profile</h2>
+          <form name="edit-profile" class="modal__form">
+            <label for="profile-name-input" class="modal__label">
+              Name
+              <input
+                id="profile-name-input"
+                type="text"
+                class="modal__input"
+                placeholder="Type your name"
+              />
+            </label>
+            <label for="profile-description-input" class="modal__label">
+              Description
+              <input
+                id="profile-description-input"
+                type="text"
+                class="modal__input"
+                placeholder="Type your description"
               />
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
@@ -143,6 +170,6 @@
         </div>
       </div>
     </div>
-    <script defer src="./scripts/index.js"></script>
+    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>
