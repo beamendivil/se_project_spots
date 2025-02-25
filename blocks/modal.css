@@ -126,6 +126,9 @@
 }
 
 @media screen and (max-width: 320px) {
+  .modal {
+    padding: 12px;
+  }
   .modal__content {
     padding: 20px;
     overflow-y: auto;
