@@ -97,17 +97,19 @@
                 <button type="button" class="card__like-btn"></button>
               </div>
             </li> -->
+
+            <template id="card-template">
+              <li class="card">
+                <img class="card__image" src="" alt="" />
+                <div class="card__content">
+                  <h2 class="card__title"></h2>
+                  <button type="button" class="card__like-btn"></button>
+                  <button type="button" class="card__delete-btn"></button>
+                </div>
+              </li>
+            </template>
           </ul>
         </section>
-        <template id="card-template">
-          <li class="card">
-            <img src="" alt="" class="card__image" />
-            <div class="card__content">
-              <h2 class="card__title"></h2>
-              <button type="button" class="card__like-btn"></button>
-            </div>
-          </li>
-        </template>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&copy;2024 Bea Mendivil</p>
@@ -143,7 +145,9 @@
 
     <div class="modal" id="add-card-modal">
       <div class="modal__content">
-        <button type="button" class="modal__close-btn"></button>
+        <button type="button" class="modal__close-btn">
+          <img src="./images/closeIcon.svg" alt="closeIcon" />
+        </button>
         <h2 class="modal__title">New Post</h2>
         <form name="edit-profile" class="modal__form">
           <label for="add-card-link-input" class="modal__label"
