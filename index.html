@@ -37,67 +37,6 @@
 
         <section class="cards">
           <ul class="cards__list">
-            <!--<li class="card">
-              <img
-                src="images/2-photo-by-ceiline-from-pexels.jpg"
-                alt="Restaurant terrace"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__title">Restaurant terrace</h2>
-                <button type="button" class="card__like-btn"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="images/3-photo-by-tubanur-dogan-from-pexels.jpg"
-                alt="An outdoor cafe"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__title">An outdoor cafe</h2>
-                <button type="button" class="card__like-btn"></button>
-              </div>
-            </li>
-
-            <li class="card">
-              <img
-                src="images/4-photo-by-maurice-laschet-from-pexels.jpg"
-                alt="A very long bridge, over the forest..."
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__title">
-                  A very long bridge, over the forest...
-                </h2>
-                <button type="button" class="card__like-btn"></button>
-              </div>
-            </li>
-
-            <li class="card">
-              <img
-                src="images/5-photo-by-van-anh-nguyen-from-pexels.jpg"
-                alt="Tunnel with morning light"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__title">Tunnel with morning light</h2>
-                <button type="button" class="card__like-btn"></button>
-              </div>
-            </li>
-
-            <li class="card">
-              <img
-                src="images/6-photo-by-moritz-feldmann-from-pexels.jpg"
-                alt="Mountain house"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__title">Mountain house</h2>
-                <button type="button" class="card__like-btn"></button>
-              </div>
-            </li> -->
-
             <template id="card-template">
               <li class="card">
                 <img class="card__image" src="" alt="" />
@@ -118,17 +57,20 @@
       <div class="modal" id="edit-modal">
         <div class="modal__content">
           <button type="button" class="modal__close-btn">
-            <img src="./images/closeIcon.svg" alt="close icon" />
+            <img src="../images/closeIcon.svg" alt="close icon" />
           </button>
           <h2 class="modal__title">Edit Profile</h2>
-          <form name="edit-profile" class="modal__form">
-            <label for="profile-name-input" class="modal__label"
-              >Name<input
-                id="profile-name-input"
+          <form name="edit-card-modal" class="modal__form">
+            <label for="add-card-input" class="modal__label"
+              >Name
+              <input
+                id="add-card-input"
                 type="text"
                 class="modal__input"
                 placeholder="Type your name"
-            /></label>
+                autocomplete="name"
+              />
+            </label>
             <label for="profile-description-input" class="modal__label"
               >Description
               <input
@@ -136,7 +78,9 @@
                 type="text"
                 class="modal__input"
                 placeholder="Describe Yourself"
-            /></label>
+                autocomplete="bio"
+              />
+            </label>
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
         </div>
@@ -151,13 +95,16 @@
         <h2 class="modal__title">New Post</h2>
         <form name="edit-profile" class="modal__form">
           <label for="add-card-link-input" class="modal__label"
-            >Image Link<input
+            >Image Link
+            <input
               id="add-card-link-input"
               type="url"
               name="link"
               class="modal__input"
               placeholder="Paste a link to the picture"
-          /></label>
+              autocomplete="url"
+            />
+          </label>
           <label for="add-card-name-input" class="modal__label"
             >Caption
             <input
@@ -166,7 +113,9 @@
               type="text"
               class="modal__input"
               placeholder="Type your caption"
-          /></label>
+              autocomplete="photo"
+            />
+          </label>
           <button type="submit" class="modal__submit-btn">Save</button>
         </form>
       </div>
@@ -175,10 +124,11 @@
     <div class="modal" id="preview-modal">
       <div class="modal__content modal__content_type_preview">
         <button
-          aria-label="Close modal"
           type="button"
           class="modal__close-btn modal__close-btn_type_preview"
-        ></button>
+        >
+          <img src="./images/closeIcon.svg" alt="close icon" />
+        </button>
         <img class="modal__image" src="#" alt="" />
         <p class="modal__caption"></p>
       </div>
