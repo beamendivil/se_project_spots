@@ -60,15 +60,14 @@
             <img src="../images/closeIcon.svg" alt="close icon" />
           </button>
           <h2 class="modal__title">Edit Profile</h2>
-          <form name="edit-card-modal" class="modal__form">
-            <label for="add-card-input" class="modal__label"
+          <form name="edit-profile" class="modal__form">
+            <label for="profile-name-input" class="modal__label"
               >Name
               <input
-                id="add-card-input"
+                id="profile-name-input"
                 type="text"
                 class="modal__input"
                 placeholder="Type your name"
-                autocomplete="name"
               />
             </label>
             <label for="profile-description-input" class="modal__label"
@@ -78,59 +77,58 @@
                 type="text"
                 class="modal__input"
                 placeholder="Describe Yourself"
-                autocomplete="bio"
               />
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
         </div>
       </div>
-    </div>
 
-    <div class="modal" id="add-card-modal">
-      <div class="modal__content">
-        <button type="button" class="modal__close-btn">
-          <img src="./images/closeIcon.svg" alt="closeIcon" />
-        </button>
-        <h2 class="modal__title">New Post</h2>
-        <form name="edit-profile" class="modal__form">
-          <label for="add-card-link-input" class="modal__label"
-            >Image Link
-            <input
-              id="add-card-link-input"
-              type="url"
-              name="link"
-              class="modal__input"
-              placeholder="Paste a link to the picture"
-              autocomplete="url"
-            />
-          </label>
-          <label for="add-card-name-input" class="modal__label"
-            >Caption
-            <input
-              id="add-card-name-input"
-              name="name"
-              type="text"
-              class="modal__input"
-              placeholder="Type your caption"
-              autocomplete="photo"
-            />
-          </label>
-          <button type="submit" class="modal__submit-btn">Save</button>
-        </form>
+      <div class="modal" id="add-card-modal">
+        <div class="modal__content">
+          <button type="button" class="modal__close-btn">
+            <img src="./images/closeIcon.svg" alt="closeIcon" />
+          </button>
+          <h2 class="modal__title">New Post</h2>
+          <form name="edit-profile" class="modal__form">
+            <label for="add-card-link-input" class="modal__label"
+              >Image Link
+              <input
+                id="add-card-link-input"
+                type="url"
+                name="link"
+                class="modal__input"
+                placeholder="Paste a link to the picture"
+                autocomplete="url"
+              />
+            </label>
+            <label for="add-card-name-input" class="modal__label"
+              >Caption
+              <input
+                id="add-card-name-input"
+                name="name"
+                type="text"
+                class="modal__input"
+                placeholder="Type your caption"
+                autocomplete="photo"
+              />
+            </label>
+            <button type="submit" class="modal__submit-btn">Save</button>
+          </form>
+        </div>
       </div>
-    </div>
 
-    <div class="modal" id="preview-modal">
-      <div class="modal__content modal__content_type_preview">
-        <button
-          type="button"
-          class="modal__close-btn modal__close-btn_type_preview"
-        >
-          <img src="./images/closeIcon.svg" alt="close icon" />
-        </button>
-        <img class="modal__image" src="#" alt="" />
-        <p class="modal__caption"></p>
+      <div class="modal" id="preview-modal">
+        <div class="modal__content modal__content_type_preview">
+          <button
+            type="button"
+            class="modal__close-btn modal__close-btn_type_preview"
+          >
+            <img src="./images/closeIcon.svg" alt="close icon" />
+          </button>
+          <img class="modal__image" src="#" alt="" />
+          <p class="modal__caption"></p>
+        </div>
       </div>
     </div>
     <script src="scripts/index.js" defer=""></script>

@@ -1,5 +1,4 @@
 .modal {
-  font-family: poppins, Arial, Helvetica, sans-serif;
   position: fixed;
   top: 0;
   left: 0;
@@ -11,8 +10,9 @@
   justify-content: center;
   align-items: center;
   visibility: hidden;
-  transition: visibility 0.3s;
-  opacity: 0.3 ease-in-out;
+  transition: opacity 0.5s linear 0.5s;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .modal_opened {
@@ -26,7 +26,6 @@
   padding: 32px 50px;
   max-width: 730px;
   width: 100%;
-
   border-radius: 8px;
   position: relative;
 }
@@ -41,7 +40,7 @@
 
 .modal__image {
   width: 100%;
-  margin: auto;
+  height: 100%;
   object-fit: contain;
   max-width: 80vw;
   max-height: 80vh;
@@ -71,8 +70,8 @@
   padding: 0;
   cursor: pointer;
   margin: 0;
-  background-size: 35px 35px;
-  opacity: 40%;
+  opacity: 1;
+  transition: visibility 0.5s linear 0.5s opacity 0.5s linear;
 }
 
 .modal__close-btn:hover {
@@ -82,12 +81,15 @@
 
 .modal__close-btn_type_preview {
   width: 40px;
+  position: absolute;
   height: 40px;
   top: 0;
   right: -52.5px;
   background-color: transparent;
   background-image: url("../images/close-icon-white.png");
   opacity: 1;
+  padding: 0;
+  cursor: pointer;
 }
 
 .modal__title {
@@ -126,6 +128,8 @@
   border: 1px solid;
   border-radius: 8px;
   max-width: 630px;
+  font-weight: 500;
+  font-size: 16px;
   height: 52px;
   color: #212121;
   opacity: 1;
@@ -166,15 +170,15 @@
   .modal__close-btn {
     top: 12px;
     right: 12px;
-    width: 32px; /* Adjust size for mobile view */
-    height: 32px; /* Adjust size for mobile view */
+    width: 32px;
+    height: 32px;
   }
 
   .modal__close-btn_type_preview {
     top: 12px;
     right: 12px;
-    width: 32px; /* Adjust size for mobile view */
-    height: 32px; /* Adjust size for mobile view */
+    width: 32px;
+    height: 32px;
   }
 
   .modal__label {
@@ -241,14 +245,14 @@
   .modal__close-btn {
     top: 12px;
     right: 12px;
-    width: 32px; /* Adjust size for mobile view */
-    height: 32px; /* Adjust size for mobile view */
+    width: 32px;
+    height: 32px;
   }
 
   .modal__close-btn_type_preview {
     top: 12px;
     right: 12px;
-    width: 32px; /* Adjust size for mobile view */
-    height: 32px; /* Adjust size for mobile view */
+    width: 32px;
+    height: 32px;
   }
 }

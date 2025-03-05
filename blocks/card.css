@@ -36,6 +36,7 @@
 
 .card__like-btn {
   background-image: url(../images/heart.svg);
+  background-repeat: no-repeat;
   width: 23px;
   height: 20px;
   border: none;
@@ -45,17 +46,17 @@
 }
 
 .card__like-btn_liked {
-  background-image: url(../images/liked.png);
+  background-image: url(../images/State=Liked.svg);
+  opacity: 100%;
 }
 
 .card__like-btn:hover {
-  background-image: url(../images/Hoverlike.svg);
   opacity: 100%;
   cursor: pointer;
 }
 
 .card__delete-btn {
-  background-image: url(../images/State=Default.png);
+  background-image: url(../images/State=Default.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
