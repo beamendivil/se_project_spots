@@ -31,7 +31,6 @@
   border-radius: 8px;
   position: relative;
   box-sizing: border-box;
-  border-radius: 8px;
 }
 
 .modal__content_type_preview {
@@ -83,7 +82,11 @@
   cursor: pointer;
   margin: 0;
   opacity: 1;
-  transition: visibility 0.5s linear 0.5s opacity 0.5s linear;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.modal__close-btn:hover {
+  background-color: #e0e0e0; /* Slightly darker background color on hover */
 }
 
 .modal__close-btn_type_preview {
@@ -99,6 +102,11 @@
   cursor: pointer;
 }
 
+.modal__close-btn_type_preview:hover {
+  background-image: url("../images/closeIcon.svg");
+  background-color: transparent;
+}
+
 .modal__title {
   margin: 0 0 32px;
   font-size: 32px;
@@ -111,12 +119,11 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 0 0 32px;
+  margin-bottom: 32px;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.1;
   color: #212121;
-  font-size: 16px;
   opacity: 70%;
 }
 
@@ -138,12 +145,12 @@
 
 .modal__input {
   padding: 16px 12px;
-  font-family: poppins, Arial, Helvetica, sans-serif;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
   border: 1px solid;
   border-radius: 8px;
   max-width: 630px;
   font-weight: 500;
-  font-size: 20x;
+  font-size: 20px;
   line-height: 1;
   color: #212121;
 }
@@ -154,6 +161,7 @@
   font-size: 20px;
   opacity: 100%;
 }
+
 .modal__form {
   display: flex;
   flex-direction: column;
@@ -180,17 +188,18 @@
     font-size: 20px;
     line-height: 20px;
   }
+
   .modal__close-btn {
     top: 12px;
     right: 12px;
-    width: 40x;
+    width: 40px;
     height: 40px;
   }
 
   .modal__close-btn_type_preview {
     position: absolute;
     top: -50px;
-    right: -5;
+    right: -5px;
   }
 
   .modal__label {
@@ -199,6 +208,7 @@
     font-weight: 500;
     line-height: 17.6px;
   }
+
   .modal__submit-btn {
     width: 100%;
   }
@@ -254,6 +264,7 @@
     padding: 18px 32px 18px 32px;
     gap: 8px;
   }
+
   .modal__close-btn {
     top: 12px;
     right: 12px;
