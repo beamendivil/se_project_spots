@@ -37,8 +37,10 @@ const editModal = document.querySelector("#edit-modal");
 const addCardModal = document.querySelector("#add-card-modal");
 const previewModal = document.querySelector("#preview-modal");
 
-const editFormElement = editModal.querySelector(".modal__form");
-const addCardFormElement = addCardModal.querySelector(".modal__form");
+const editFormElement = document.querySelector("#edit-modal .modal__form");
+const addCardFormElement = document.querySelector(
+  "#add-card-modal .modal__form"
+);
 
 const editModalNameInput = editFormElement.querySelector("#profile-name-input");
 const editModalDescriptionInput = editFormElement.querySelector(
@@ -63,6 +65,9 @@ const addCardModalCloseBtn = document.querySelector(
 const previewModalExitButton = document.querySelector(
   ".modal__close-btn_type_preview"
 );
+
+const previewImage = previewModal.querySelector(".modal__image");
+const previewCaption = previewModal.querySelector(".modal__caption");
 
 const cardImageSelector = ".card__image";
 const cardTitleSelector = ".card__title";
@@ -89,8 +94,6 @@ function createCard({ name, link }) {
   });
 
   cardImage.addEventListener("click", () => {
-    const previewImage = previewModal.querySelector(".modal__image");
-    const previewCaption = previewModal.querySelector(".modal__caption");
     previewImage.src = link;
     previewImage.alt = name;
     previewCaption.textContent = name;
@@ -173,3 +176,5 @@ addCardFormElement.addEventListener("submit", handleAddCardSubmit);
 previewModalExitButton.addEventListener("click", () => {
   closeModal(previewModal);
 });
+
+editFormElement.addEventListener("submit", handleEditFormSubmit);
