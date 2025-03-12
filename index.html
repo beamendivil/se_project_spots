@@ -6,12 +6,12 @@
     <meta name="description" content="A sweet landing Place." />
     <meta name="author" content="Bea Mendivil" />
     <meta name="keywords" content="Figma, photography, art" />
-    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="pages/index.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>SPOTS</title>
   </head>
-  <body>
-    <div class="page">
+  <body class="page">
+    <div class="page__content">
       <header class="header">
         <img src="images/Logo.svg" alt="spots_logo" class="header__logo" />
       </header>
@@ -84,9 +84,7 @@
 
       <div class="modal" id="add-card-modal">
         <div class="modal__content">
-          <button type="button" class="modal__close-btn">
-            <img src="./images/closeIcon.svg" alt="closeIcon" />
-          </button>
+          <button type="button" class="modal__close-btn"></button>
           <h2 class="modal__title">New Post</h2>
           <form name="edit-profile" class="modal__form">
             <label for="add-card-link-input" class="modal__label"

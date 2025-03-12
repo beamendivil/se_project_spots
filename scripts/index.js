@@ -163,7 +163,6 @@ editModalCloseBtn.addEventListener("click", () => {
 });
 
 cardAddButton.addEventListener("click", () => {
-  addCardFormElement.reset();
   openModal(addCardModal);
 });
 
