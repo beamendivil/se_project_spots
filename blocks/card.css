@@ -38,7 +38,7 @@
 .card__like-btn {
   background-image: url("../images/heart.svg");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100%;
   width: 23px;
   height: 20px;
   border: none;
@@ -50,7 +50,7 @@
 .card__like-btn_liked {
   background-image: url("../images/State=Liked.svg");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100%;
   background-color: transparent;
   opacity: 100%;
 }
@@ -60,7 +60,14 @@
   background-repeat: no-repeat;
   transition: 0.3s;
   opacity: 100%;
-  background-size: contain;
+  background-size: 100%;
+  cursor: pointer;
+}
+
+.card__like-btn_liked:hover {
+  background-image: url("../images/Hoverlike.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
   cursor: pointer;
 }
 

@@ -175,15 +175,14 @@
   flex-direction: column;
   gap: 8px;
 }
-@media screen and (max-width: 760px) {
+
+@media screen and (max-width: 759px) {
   .modal__content {
     padding: 15px;
     max-width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    left: 10px;
-    right: 10px;
   }
   .modal__submit-btn {
     min-width: 257px;
@@ -191,7 +190,6 @@
     padding: 12px;
   }
   .modal__close-btn {
-    right: 12px;
     width: 40px;
     height: 40px;
   }
@@ -209,9 +207,9 @@
     padding: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    left: 10px;
-    right: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
   }
 
   .modal__content_type_preview {
@@ -241,6 +239,7 @@
   }
 
   .modal__input {
+    display: flex;
     font-size: 16px;
     font-weight: 500;
     box-sizing: border-box;
@@ -265,8 +264,8 @@
   }
 
   .modal__close-btn {
-    top: 12px;
-    right: 12px;
+    top: -41px;
+    right: 25px;
     width: 40px;
     height: 40px;
   }
