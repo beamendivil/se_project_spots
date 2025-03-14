@@ -78,7 +78,7 @@
   flex-direction: row;
   align-self: flex-end;
   height: 52px;
-  background-color: #212121;
+  background-color: rgba(33, 33, 33, 1.2);
   border-radius: 8px;
   color: #fcf5e5;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
@@ -91,7 +91,6 @@
   justify-content: center;
   align-self: stretch;
   margin-top: auto;
-  opacity: 100%;
   transition: opacity 0.3s;
   border: none;
   cursor: pointer;

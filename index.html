@@ -84,10 +84,11 @@
 
       <div class="modal" id="add-card-modal">
         <div class="modal__content">
+          <button type="button" class="modal__close-btn"></button>
           <h2 class="modal__title">New Post</h2>
           <form name="edit-profile" class="modal__form">
-            <label for="add-card-link-input" class="modal__label"
-              >Image Link
+            <label for="add-card-link-input" class="modal__label">
+              Image Link
               <input
                 id="add-card-link-input"
                 type="url"
@@ -97,8 +98,8 @@
                 autocomplete="url"
               />
             </label>
-            <label for="add-card-name-input" class="modal__label"
-              >Caption
+            <label for="add-card-name-input" class="modal__label">
+              Caption
               <input
                 id="add-card-name-input"
                 name="name"
@@ -115,16 +116,13 @@
 
       <div class="modal" id="preview-modal">
         <div class="modal__content modal__content_type_preview">
-          <button
-            type="button"
-            class="modal__close-btn modal__close-btn_type_preview"
-          >
-            <img src="./images/closeIcon.svg" alt="close icon" />
-          </button>
-          <img class="modal__image" src="#" alt="" />
-          <p class="modal__caption"></p>
+            <button
+                type="button"
+                class="modal__close-btn modal__close-btn_type_preview"
+            ></button>
+            <img class="modal__image" src="#" alt="" />
+            <p class="modal__caption"></p>
         </div>
-      </div>
     </div>
     <script src="scripts/index.js" defer=""></script>
   </body>

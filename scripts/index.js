@@ -158,22 +158,35 @@ profileEditButton.addEventListener("click", () => {
   openModal(editModal);
 });
 
-editModalCloseBtn.addEventListener("click", () => {
-  closeModal(editModal);
-});
-
 cardAddButton.addEventListener("click", () => {
   openModal(addCardModal);
 });
 
-addCardModalCloseBtn.addEventListener("click", () => {
-  closeModal(addCardModal);
-});
-
 addCardFormElement.addEventListener("submit", handleAddCardSubmit);
 
-previewModalExitButton.addEventListener("click", () => {
-  closeModal(previewModal);
+editFormElement.addEventListener("submit", handleEditFormSubmit);
+
+// Select the modal elements
+const modals = document.querySelectorAll(".modal");
+const closeButtons = document.querySelectorAll(".modal__close-btn");
+
+// Function to close the modal
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+}
+
+// Add event listeners to close buttons
+closeButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const modal = button.closest(".modal");
+    closeModal(modal);
+  });
 });
 
-editFormElement.addEventListener("submit", handleEditFormSubmit);
+modals.forEach((modal) => {
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeModal(modal);
+    }
+  });
+});
