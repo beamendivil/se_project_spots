@@ -24,7 +24,6 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
 ];
-
 const cardsList = document.querySelector(".cards__list");
 const cardTemplate = document
   .querySelector("#card-template")
@@ -104,6 +103,7 @@ function createCard({ name, link }) {
 }
 
 function openModal(modal) {
+  console.log("Opening modal:", modal); // Add this line
   modal.classList.add("modal_opened");
 }
 
@@ -124,6 +124,7 @@ function handleEditFormSubmit(evt) {
   profileName.textContent = name;
   profileDescription.textContent = description;
   closeModal(editModal);
+  resetForm(editFormElement, validationConfig);
 }
 
 function handleAddCardSubmit(evt) {
@@ -140,7 +141,7 @@ function handleAddCardSubmit(evt) {
   const newCardElement = createCard(newCardData);
   cardsList.prepend(newCardElement);
   closeModal(addCardModal);
-  addCardFormElement.reset();
+  resetForm(addCardFormElement, validationConfig);
 }
 
 // Initial card rendering
@@ -153,12 +154,16 @@ cardsList.prepend(fragment);
 
 // Event listeners
 profileEditButton.addEventListener("click", () => {
+  console.log("Edit button clicked!"); // Add this line
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
+  resetForm(editFormElement, validationConfig);
   openModal(editModal);
 });
 
 cardAddButton.addEventListener("click", () => {
+  console.log("Add button clicked!"); // Add this line
+  resetForm(addCardFormElement, validationConfig);
   openModal(addCardModal);
 });
 
@@ -190,3 +195,27 @@ modals.forEach((modal) => {
     }
   });
 });
+
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscClose); // Remove listener
+}
+
+// Function to handle Escape key press
+function handleEscClose(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
+}
+
+// Function to open the modal
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+  document.addEventListener("keydown", handleEscClose); // Add listener
+}
+
+console.log("editModal:", editModal);
+console.log("addCardModal:", addCardModal);
