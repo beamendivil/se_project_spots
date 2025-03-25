@@ -29,18 +29,20 @@ function checkInputValidity(form, inputElement, config) {
 }
 
 function showInputError(form, inputElement, errorMessage, config) {
-  const errorElement = form.querySelector(`.${inputElement.id}-error`);
+  const errorElement = form.querySelector(`#${inputElement.id}-error`);
   if (errorElement) {
     errorElement.textContent = errorMessage;
     errorElement.classList.add(config.errorClass);
+    inputElement.classList.add(config.inputErrorClass); // Add input error class
   }
 }
 
 function hideInputError(form, inputElement, config) {
-  const errorElement = form.querySelector(`.${inputElement.id}-error`);
+  const errorElement = form.querySelector(`#${inputElement.id}-error`);
   if (errorElement) {
     errorElement.textContent = "";
     errorElement.classList.remove(config.errorClass);
+    inputElement.classList.remove(config.inputErrorClass); // Remove input error class
   }
 }
 
