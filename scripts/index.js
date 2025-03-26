@@ -34,6 +34,18 @@ function handleEscClose(evt) {
   }
 }
 
+const validationConfig = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__submit-btn",
+  inactiveButtonClass: "modal__submit-btn_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+// Enable form validation
+enableValidation(validationConfig);
+
 const cardsList = document.querySelector(".cards__list");
 const cardTemplate = document
   .querySelector("#card-template")
@@ -173,6 +185,7 @@ profileEditButton.addEventListener("click", () => {
 });
 
 cardAddButton.addEventListener("click", () => {
+  resetForm(addCardFormElement, validationConfig);
   openModal(addCardModal);
 });
 
