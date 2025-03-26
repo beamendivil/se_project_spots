@@ -163,10 +163,12 @@ initialCards.forEach((cardData) => {
 });
 cardsList.prepend(fragment);
 
-// Event listeners
 profileEditButton.addEventListener("click", () => {
+  clearValidation(editFormElement, validationConfig);
+
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
+
   openModal(editModal);
 });
 
@@ -187,5 +189,14 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const modal = button.closest(".modal");
     closeModal(modal);
+  });
+});
+
+// Add event listener to close modal when clicking on the overlay
+modals.forEach((modal) => {
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeModal(modal);
+    }
   });
 });

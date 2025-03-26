@@ -62,7 +62,7 @@ function hasInvalidInput(inputList) {
   });
 }
 
-function resetForm(form, config) {
+function clearValidation(form, config) {
   const inputList = Array.from(form.querySelectorAll(config.inputSelector));
   const buttonElement = form.querySelector(config.submitButtonSelector);
 
@@ -71,6 +71,10 @@ function resetForm(form, config) {
   });
 
   toggleButtonState(inputList, buttonElement, config);
+}
+
+function resetForm(form, config) {
+  clearValidation(form, config);
   form.reset();
 }
 
