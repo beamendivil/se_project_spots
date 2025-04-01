@@ -180,15 +180,15 @@
   border-color: #ff0000;
 }
 
-.modal__error_visible {
-  display: block;
-}
-
 .modal__error {
   display: none;
   color: #ff0000;
   font-size: 12px;
   margin-top: 5px;
+}
+
+.modal__error_visible {
+  display: block;
 }
 
 .modal__form {
