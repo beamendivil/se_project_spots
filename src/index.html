@@ -16,11 +16,16 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="./images/avatar.jpg"
-            alt="Bessie Coleman"
-            class="profile__avatar"
-          />
+          <div class="profile__avatar-container">
+            <img
+              src="./images/avatar.jpg"
+              alt="Bessie Coleman"
+              class="profile__avatar"
+            />
+            <button type="button" class="profile__avatar-edit-btn">
+              <img src="./images/pencil.svg" alt="edit avatar" />
+            </button>
+          </div>
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
@@ -138,6 +143,46 @@
           ></button>
           <img class="modal__image" src="#" alt="" />
           <p class="modal__caption"></p>
+        </div>
+      </div>
+
+      <div class="modal" id="avatar-modal">
+        <div class="modal__content">
+          <button type="button" class="modal__close-btn"></button>
+          <h2 class="modal__title">Change Profile Picture</h2>
+          <form name="change-avatar" class="modal__form">
+            <label for="avatar-link-input" class="modal__label">
+              Image Link
+              <input
+                id="avatar-link-input"
+                type="url"
+                name="avatar"
+                class="modal__input"
+                placeholder="Paste a link to the picture"
+                autocomplete="url"
+                required
+              />
+              <span class="modal__error" id="avatar-link-input-error"></span>
+            </label>
+            <button type="submit" class="modal__submit-btn">Save</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal" id="confirm-modal">
+        <div class="modal__content">
+          <button type="button" class="modal__close-btn"></button>
+          <h2 class="modal__title">Are you sure?</h2>
+          <p class="modal__text">This action is irreversible.</p>
+          <div class="modal__buttons">
+            <button
+              type="button"
+              class="modal__submit-btn modal__submit-btn_type_confirm"
+            >
+              Yes
+            </button>
+            <button type="button" class="modal__cancel-btn">Cancel</button>
+          </div>
         </div>
       </div>
     </div>

@@ -16,18 +16,24 @@ const SELECTORS = {
   profileAddBtn: ".profile__add-btn",
   profileName: ".profile__name",
   profileDescription: ".profile__description",
+  profileAvatar: ".profile__avatar",
+  profileAvatarEditBtn: ".profile__avatar-edit-btn",
   modalOpened: ".modal_opened",
   modalSubmitBtn: ".modal__submit-btn",
+  modalCancelBtn: ".modal__cancel-btn",
   modals: {
     edit: "#edit-modal",
     addCard: "#add-card-modal",
     preview: "#preview-modal",
+    avatar: "#avatar-modal",
+    confirm: "#confirm-modal",
   },
   inputs: {
     profileName: "#profile-name-input",
     profileDescription: "#profile-description-input",
     cardName: "#add-card-name-input",
     cardLink: "#add-card-link-input",
+    avatarLink: "#avatar-link-input",
   },
   closeButtons: ".modal__close-btn",
   previewCloseBtn: ".modal__close-btn_type_preview",
@@ -40,6 +46,8 @@ const BUTTON_TEXT = {
   save: "Save",
   creating: "Creating...",
   create: "Create",
+  deleting: "Deleting...",
+  delete: "Yes",
 };
 
 // Initialize API
@@ -152,14 +160,20 @@ const cardTemplate = getElement(SELECTORS.cardTemplate)?.content.querySelector(
 
 const profileEditButton = getElement(SELECTORS.profileEditBtn);
 const cardAddButton = getElement(SELECTORS.profileAddBtn);
+const profileAvatarEditButton = getElement(SELECTORS.profileAvatarEditBtn);
 
 const editModal = getElement(SELECTORS.modals.edit);
 const addCardModal = getElement(SELECTORS.modals.addCard);
 const previewModal = getElement(SELECTORS.modals.preview);
+const avatarModal = getElement(SELECTORS.modals.avatar);
+const confirmModal = getElement(SELECTORS.modals.confirm);
 
 const editFormElement = getElement(`${SELECTORS.modals.edit} .modal__form`);
 const addCardFormElement = getElement(
   `${SELECTORS.modals.addCard} .modal__form`
+);
+const avatarFormElement = getElement(
+  `${SELECTORS.modals.avatar} .modal__form`
 );
 
 const editModalNameInput = editFormElement?.querySelector(
@@ -170,12 +184,16 @@ const editModalDescriptionInput = editFormElement?.querySelector(
 );
 const profileName = getElement(SELECTORS.profileName);
 const profileDescription = getElement(SELECTORS.profileDescription);
+const profileAvatar = getElement(SELECTORS.profileAvatar);
 
 const cardModalNameInput = addCardFormElement?.querySelector(
   SELECTORS.inputs.cardName
 );
 const cardModalLinkInput = addCardFormElement?.querySelector(
   SELECTORS.inputs.cardLink
+);
+const avatarModalLinkInput = avatarFormElement?.querySelector(
+  SELECTORS.inputs.avatarLink
 );
 
 const previewImage = previewModal?.querySelector(SELECTORS.modalImage);
@@ -197,14 +215,29 @@ function handleCardLike(cardData, cardLikeBtn) {
 }
 
 function handleCardDelete(cardData, cardElement) {
-  if (confirm("Are you sure you want to delete this card?")) {
-    api
-      .deleteCard(cardData._id)
-      .then(() => {
-        cardElement.remove();
-      })
-      .catch(handleError);
-  }
+  pendingCardDelete = { cardData, cardElement };
+  openModal(confirmModal);
+}
+
+function handleConfirmDelete() {
+  if (!pendingCardDelete) return;
+
+  const { cardData, cardElement } = pendingCardDelete;
+  const submitButton = confirmModal.querySelector(SELECTORS.modalSubmitBtn);
+  
+  renderLoading(true, submitButton, BUTTON_TEXT.deleting, BUTTON_TEXT.delete);
+
+  api
+    .deleteCard(cardData._id)
+    .then(() => {
+      cardElement.remove();
+      closeModal(confirmModal);
+      pendingCardDelete = null;
+    })
+    .catch(handleError)
+    .finally(() => {
+      renderLoading(false, submitButton, BUTTON_TEXT.deleting, BUTTON_TEXT.delete);
+    });
 }
 
 function handleImagePreview(cardData) {
@@ -320,8 +353,37 @@ function handleAddCardSubmit(evt) {
     });
 }
 
+function handleAvatarSubmit(evt) {
+  evt.preventDefault();
+  const submitButton = evt.target.querySelector(SELECTORS.modalSubmitBtn);
+  const avatar = avatarModalLinkInput.value.trim();
+
+  if (avatar === "") {
+    alert("Avatar link must be filled out.");
+    return;
+  }
+
+  renderLoading(true, submitButton);
+
+  api
+    .updateAvatar({ avatar })
+    .then((userData) => {
+      profileAvatar.src = userData.avatar;
+      currentUser = userData; // Update global user data
+      avatarFormElement.reset();
+      resetForm(avatarFormElement, validationConfig);
+      closeModal(avatarModal);
+    })
+    .catch(handleError)
+    .finally(() => {
+      renderLoading(false, submitButton);
+    });
+}
+
 // Global variable to store current user data
 let currentUser = null;
+// Global variables for pending actions
+let pendingCardDelete = null;
 
 // Initialize the application
 function initializeApp() {
@@ -334,6 +396,10 @@ function initializeApp() {
       // Update profile information
       profileName.textContent = userData.name;
       profileDescription.textContent = userData.about || "";
+      if (userData.avatar) {
+        profileAvatar.src = userData.avatar;
+        profileAvatar.alt = userData.name;
+      }
 
       // Render cards
       renderCards(cardsData);
@@ -377,6 +443,17 @@ function setupEventListeners() {
   // Form submissions
   addCardFormElement?.addEventListener("submit", handleAddCardSubmit);
   editFormElement?.addEventListener("submit", handleEditFormSubmit);
+  avatarFormElement?.addEventListener("submit", handleAvatarSubmit);
+
+  // Confirmation modal
+  const confirmButton = confirmModal?.querySelector(SELECTORS.modalSubmitBtn);
+  const cancelButton = confirmModal?.querySelector(SELECTORS.modalCancelBtn);
+  
+  confirmButton?.addEventListener("click", handleConfirmDelete);
+  cancelButton?.addEventListener("click", () => {
+    closeModal(confirmModal);
+    pendingCardDelete = null;
+  });
 
   // Button clicks
   profileEditButton?.addEventListener("click", () => {
@@ -398,12 +475,22 @@ function setupEventListeners() {
     openModal(addCardModal);
   });
 
+  profileAvatarEditButton?.addEventListener("click", () => {
+    resetForm(avatarFormElement, validationConfig);
+    openModal(avatarModal);
+  });
+
   // Modal close buttons
   const closeButtons = document.querySelectorAll(SELECTORS.closeButtons);
   closeButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const modal = button.closest(".modal");
       closeModal(modal);
+      
+      // Clear pending actions when closing confirmation modal
+      if (modal === confirmModal) {
+        pendingCardDelete = null;
+      }
     });
   });
 
@@ -413,6 +500,11 @@ function setupEventListeners() {
     modal.addEventListener("click", (event) => {
       if (event.target === modal) {
         closeModal(modal);
+        
+        // Clear pending actions when closing confirmation modal
+        if (modal === confirmModal) {
+          pendingCardDelete = null;
+        }
       }
     });
   });

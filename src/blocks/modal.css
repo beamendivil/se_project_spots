@@ -295,3 +295,46 @@
     height: 40px;
   }
 }
+
+/* Confirmation Modal Styles */
+.modal__text {
+  margin: 0 0 32px;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #212121;
+}
+
+.modal__buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.modal__cancel-btn {
+  background-color: transparent;
+  border: 1px solid #212121;
+  border-radius: 8px;
+  color: #212121;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+  padding: 18px 32px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  flex: 1;
+}
+
+.modal__cancel-btn:hover {
+  background-color: #f5f5f5;
+}
+
+.modal__submit-btn_type_confirm {
+  background-color: #ff0000;
+  border: 1px solid #ff0000;
+  flex: 1;
+}
+
+.modal__submit-btn_type_confirm:hover {
+  background-color: #cc0000;
+  border-color: #cc0000;
+}
