@@ -172,9 +172,7 @@ const editFormElement = getElement(`${SELECTORS.modals.edit} .modal__form`);
 const addCardFormElement = getElement(
   `${SELECTORS.modals.addCard} .modal__form`
 );
-const avatarFormElement = getElement(
-  `${SELECTORS.modals.avatar} .modal__form`
-);
+const avatarFormElement = getElement(`${SELECTORS.modals.avatar} .modal__form`);
 
 const editModalNameInput = editFormElement?.querySelector(
   SELECTORS.inputs.profileName
@@ -209,7 +207,7 @@ function handleCardLike(cardData, cardLikeBtn) {
     .changeLikeCardStatus(cardData._id, isCurrentlyLiked)
     .then((updatedCard) => {
       cardLikeBtn.classList.toggle("card__like-btn_liked");
-      cardData.likes = updatedCard.likes;
+      cardData.isLiked = updatedCard.isLiked;
     })
     .catch(handleError);
 }
@@ -224,7 +222,7 @@ function handleConfirmDelete() {
 
   const { cardData, cardElement } = pendingCardDelete;
   const submitButton = confirmModal.querySelector(SELECTORS.modalSubmitBtn);
-  
+
   renderLoading(true, submitButton, BUTTON_TEXT.deleting, BUTTON_TEXT.delete);
 
   api
@@ -236,7 +234,12 @@ function handleConfirmDelete() {
     })
     .catch(handleError)
     .finally(() => {
-      renderLoading(false, submitButton, BUTTON_TEXT.deleting, BUTTON_TEXT.delete);
+      renderLoading(
+        false,
+        submitButton,
+        BUTTON_TEXT.deleting,
+        BUTTON_TEXT.delete
+      );
     });
 }
 
@@ -258,16 +261,8 @@ function createCard(cardData, currentUserId) {
   cardImage.alt = cardData.name;
   cardTitle.textContent = cardData.name;
 
-  // Show delete button only for user's own cards
-  const isOwnCard = cardData.owner && cardData.owner._id === currentUserId;
-  if (!isOwnCard) {
-    cardDeleteBtn.style.display = "none";
-  }
-
   // Set initial like state
-  const isLiked =
-    cardData.likes && cardData.likes.some((user) => user._id === currentUserId);
-  if (isLiked) {
+  if (cardData.isLiked) {
     cardLikeBtn.classList.add("card__like-btn_liked");
   }
 
@@ -388,7 +383,8 @@ let pendingCardDelete = null;
 // Initialize the application
 function initializeApp() {
   // Load user profile and cards from API
-  Promise.all([api.getUserInfo(), api.getInitialCards()])
+  api
+    .getAppInfo()
     .then(([userData, cardsData]) => {
       // Store current user data
       currentUser = userData;
@@ -448,7 +444,7 @@ function setupEventListeners() {
   // Confirmation modal
   const confirmButton = confirmModal?.querySelector(SELECTORS.modalSubmitBtn);
   const cancelButton = confirmModal?.querySelector(SELECTORS.modalCancelBtn);
-  
+
   confirmButton?.addEventListener("click", handleConfirmDelete);
   cancelButton?.addEventListener("click", () => {
     closeModal(confirmModal);
@@ -486,7 +482,7 @@ function setupEventListeners() {
     button.addEventListener("click", () => {
       const modal = button.closest(".modal");
       closeModal(modal);
-      
+
       // Clear pending actions when closing confirmation modal
       if (modal === confirmModal) {
         pendingCardDelete = null;
@@ -500,7 +496,7 @@ function setupEventListeners() {
     modal.addEventListener("click", (event) => {
       if (event.target === modal) {
         closeModal(modal);
-        
+
         // Clear pending actions when closing confirmation modal
         if (modal === confirmModal) {
           pendingCardDelete = null;

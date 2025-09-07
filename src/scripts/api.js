@@ -93,6 +93,11 @@ class Api {
   changeLikeCardStatus(cardId, isLiked) {
     return isLiked ? this.removeLike(cardId) : this.addLike(cardId);
   }
+
+  // App Initialization Method
+  getAppInfo() {
+    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
+  }
 }
 
 export default Api;
