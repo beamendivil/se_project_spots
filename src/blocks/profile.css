@@ -18,6 +18,8 @@
   gap: 20px;
   cursor: pointer;
   transition: opacity 0.3s;
+  object-fit: cover;
+  background-color: #f0f0f0;
 }
 
 .profile__avatar-container:hover .profile__avatar {

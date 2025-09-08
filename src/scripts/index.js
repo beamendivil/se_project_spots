@@ -251,6 +251,7 @@ function handleImagePreview(cardData) {
 }
 
 function createCard(cardData, currentUserId) {
+  console.log("Creating card with data:", cardData); // Debug log
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(SELECTORS.cardImage);
   const cardTitle = cardElement.querySelector(SELECTORS.cardTitle);
@@ -260,6 +261,8 @@ function createCard(cardData, currentUserId) {
   cardImage.src = cardData.link;
   cardImage.alt = cardData.name;
   cardTitle.textContent = cardData.name;
+
+  console.log("Setting image src to:", cardData.link); // Debug log
 
   // Set initial like state
   if (cardData.isLiked) {
@@ -331,6 +334,7 @@ function handleAddCardSubmit(evt) {
   api
     .addCard({ name, link })
     .then((newCard) => {
+      console.log("New card received from API:", newCard); // Debug log
       const newCardElement = createCard(newCard, currentUser._id);
       cardsList.prepend(newCardElement);
       addCardFormElement.reset();
@@ -363,7 +367,7 @@ function handleAvatarSubmit(evt) {
   api
     .updateAvatar({ avatar })
     .then((userData) => {
-      profileAvatar.src = userData.avatar;
+      setProfileAvatar(userData.avatar, userData.name || "User Avatar");
       currentUser = userData; // Update global user data
       avatarFormElement.reset();
       resetForm(avatarFormElement, validationConfig);
@@ -380,21 +384,71 @@ let currentUser = null;
 // Global variables for pending actions
 let pendingCardDelete = null;
 
+// Utility function to set avatar safely
+function setProfileAvatar(avatarUrl, altText = "User Avatar") {
+  if (!profileAvatar) {
+    console.warn("profileAvatar element not found");
+    return;
+  }
+
+  // Ensure we have a valid URL
+  if (!avatarUrl || avatarUrl.trim() === "") {
+    console.log("No avatar URL provided, keeping current avatar");
+    return;
+  }
+
+  // Normalize the URLs for comparison (handle relative paths)
+  const currentSrc = profileAvatar.src;
+  const newUrl = avatarUrl.startsWith("./") ? avatarUrl : "./" + avatarUrl;
+
+  console.log("Current avatar src:", currentSrc);
+  console.log("New avatar URL:", avatarUrl);
+
+  // Only set if we have a valid URL and it's different from current
+  if (avatarUrl !== currentSrc && !currentSrc.endsWith(avatarUrl)) {
+    console.log("Setting avatar to:", avatarUrl);
+    profileAvatar.src = avatarUrl;
+    profileAvatar.alt = altText;
+
+    // Add error handling for avatar loading
+    profileAvatar.onerror = function () {
+      console.warn("Avatar failed to load, using fallback");
+      this.src = "images/avatar.jpg";
+      this.alt = "Default Avatar";
+      this.onerror = null; // Prevent infinite loop
+    };
+  } else {
+    console.log("Avatar already set to this URL, skipping");
+  }
+}
+
 // Initialize the application
 function initializeApp() {
+  // Don't set default avatar here since it's already in HTML
+  console.log("Initializing app...");
+
   // Load user profile and cards from API
   api
     .getAppInfo()
     .then(([userData, cardsData]) => {
-      // Store current user data
+      console.log("User data received:", userData); // Debug log      // Store current user data
       currentUser = userData;
 
       // Update profile information
-      profileName.textContent = userData.name;
-      profileDescription.textContent = userData.about || "";
-      if (userData.avatar) {
-        profileAvatar.src = userData.avatar;
-        profileAvatar.alt = userData.name;
+      profileName.textContent = userData.name || "User Name";
+      profileDescription.textContent = userData.about || "User Description";
+
+      // Update avatar using the centralized function (only if user has a real custom avatar)
+      // Ignore placeholder avatars from practicum-content
+      if (
+        userData.avatar &&
+        !userData.avatar.includes("practicum-content.s3.amazonaws.com")
+      ) {
+        setProfileAvatar(userData.avatar, userData.name || "User Avatar");
+      } else {
+        console.log(
+          "Using default avatar (no custom avatar or placeholder detected)"
+        );
       }
 
       // Render cards
@@ -402,6 +456,12 @@ function initializeApp() {
     })
     .catch((error) => {
       console.error("Failed to initialize app:", error);
+
+      // Fallback: set default avatar and profile info
+      setProfileAvatar("./images/avatar.jpg", "Default Avatar");
+      profileName.textContent = "User Name";
+      profileDescription.textContent = "User Description";
+
       // Fallback to local data
       renderCards(initialCards);
     });

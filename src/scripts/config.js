@@ -1,13 +1,19 @@
-// API Configuration
+// API Configuration - Use your TripleTen student token here
 export const API_CONFIG = {
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "your-token-here", // Replace with actual token
+    authorization: "12c3a7ea-f9fe-4d1a-b905-983f501aca74",
     "Content-Type": "application/json",
   },
 };
 
-// Alternative configuration for different environments
+// Fallback configuration for development/demo purposes
+export const FALLBACK_CONFIG = {
+  baseUrl: "https://jsonplaceholder.typicode.com", // Mock API for demo
+  headers: {
+    "Content-Type": "application/json",
+  },
+}; // Alternative configuration for different environments
 export const getApiConfig = () => {
   const isDevelopment = process.env.NODE_ENV === "development";
 
@@ -16,7 +22,7 @@ export const getApiConfig = () => {
       ? "http://localhost:3000/v1"
       : "https://around-api.en.tripleten-services.com/v1",
     headers: {
-      authorization: "your-token-here", // Replace with actual token
+      authorization: "12c3a7ea-f9fe-4d1a-b905-983f501aca74",
       "Content-Type": "application/json",
     },
   };
